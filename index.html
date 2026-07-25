@@ -220,7 +220,17 @@
             display: inline-block;
             transition: all 0.3s ease;
             margin-top: 0.5rem;
+            /* La dirección mide 38 caracteres y con el relleno se salía de la pantalla en
+               celular. Con esto la caja nunca excede el ancho disponible y, si aun así no
+               cabe, la dirección se parte en vez de desbordar. */
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
+
+        html, body { overflow-x: hidden; }
+        .highlight-box { overflow-wrap: anywhere; }
 
         .contact-email:hover {
             background: #c8e6c9;
@@ -288,6 +298,13 @@
         }
 
         @media (max-width: 480px) {
+            .contact-email {
+                padding: 0.85rem 1rem;
+                font-size: 0.85rem;
+                display: block;
+                text-align: center;
+            }
+
             .header {
                 padding: 1.5rem 1rem;
             }
